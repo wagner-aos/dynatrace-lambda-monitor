@@ -41,7 +41,7 @@ public class DynatracePropertiesReaderChainTest {
         assertEquals(reader.getDeviceID(), new Long(42));
         assertEquals(reader.getEndpointURL(), "<ServerURL>");
         assertEquals(reader.getClientIP(), "8.8.8.8");
-        assertEquals(reader.getUser(), "wagner.oliveira@provider-it.com.br");
+        assertEquals(reader.getUser(), "wagner.aos.sa@gmail.com");
         assertEquals(reader.getApplicationVersion(), "1.0.0.0");
         assertEquals(reader.getOperatingSystem(), "Windows 10");
         assertEquals(reader.getManufacturer(), "MyCompany");
@@ -66,7 +66,7 @@ public class DynatracePropertiesReaderChainTest {
         assertEquals(reader.getDeviceID(), new Long(42));
         assertEquals(reader.getEndpointURL(), "<ServerURL>");
         assertEquals(reader.getClientIP(), "8.8.8.8");
-        assertEquals(reader.getUser(), "wagner.oliveira@provider-it.com.br");
+        assertEquals(reader.getUser(), "wagner.aos.sa@gmail.com");
         assertEquals(reader.getApplicationVersion(), "1.0.0.0");
         assertEquals(reader.getOperatingSystem(), "Windows 10");
         assertEquals(reader.getManufacturer(), "MyCompany");
