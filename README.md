@@ -207,5 +207,7 @@ dynatrace.endpoint.url=<ServerURL>
 
 4-Now you can run 'mvn clean package' in order get tests executed, and sending results to Dynatrace Server!
 
+![Alt text](images/dynatrace-01.png?raw=true "Dynatrace Application Console")
+
 ## I hope you enjoy it!  ;-) and feel free to make some improvements!!!
 
