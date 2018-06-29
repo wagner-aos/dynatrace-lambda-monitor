@@ -180,6 +180,8 @@ public Integer handleRequest(DynamodbEvent dbEvent, Context context) {
 
 1-Go to Dynatrace Console and create a new application configuration.
 
+![Dynatrace Console](/dynatrace-lambda-monitor/images/dynatrace-00.png)
+
 2-Get The ApplicationName, ApplicationID and ServerURL and modify the file 'app.properties' at 'src/test/resources'.
 ```
 dynatrace.application.name=<ApplicationName>
