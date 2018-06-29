@@ -4,6 +4,8 @@
 
 # Dynatrace Lambda Monitor
 
+![Dynatrace Console](/dynatrace-lambda-monitor/images/dynatrace-logo.png)
+
 ## Description:
 Library for monitoring services based on Dynatrace OpenKit.
 
@@ -211,5 +213,6 @@ dynatrace.endpoint.url=<ServerURL>
 
 ![Dynatrace Console](/dynatrace-lambda-monitor/images/dynatrace-01.png)
 
+![Dynatrace Console](/dynatrace-lambda-monitor/images/dynatrace-02.png)
 ## I hope you enjoy it!  ;-) and feel free to make some improvements!!!
 
