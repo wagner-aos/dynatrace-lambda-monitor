@@ -207,7 +207,7 @@ dynatrace.endpoint.url=<ServerURL>
 
 4-Now you can run 'mvn clean package' in order get tests executed, and sending results to Dynatrace Server!
 
-![Alt text](https://github.com/wagner-aos/dynatrace-lambda-monitor/tree/master/dynatrace-lambda-monitor/images/dynatrace-01.png)
+![Alt text](https://github.com/wagner-aos/dynatrace-lambda-monitor/dynatrace-lambda-monitor/images/dynatrace-01.png)
 
 ## I hope you enjoy it!  ;-) and feel free to make some improvements!!!
 
