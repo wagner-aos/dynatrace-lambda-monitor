@@ -152,8 +152,6 @@ public Integer handleRequest(DynamodbEvent dbEvent, Context context) {
             monitor = new DynatraceMonitorStarter().getMonitor();
             monitor.createRootAction("HandlerRequestStart");
             logger.log("Dynatrace RootAction: Handler Request - STARTED");
-
-            // dynatrace
             monitor.getRootAction();
             childAction = monitor.getRootAction().enterAction("SaveRecords");
             logger.log("ChildAction: Gravar registro no DynamoDB - STARTED");
@@ -164,12 +162,13 @@ public Integer handleRequest(DynamodbEvent dbEvent, Context context) {
 
         } catch (DynatraceMonitorException e) {
             DynatraceLogger.log(e);
+            
+            //Reporting any exception (crashes)
             String errorName = e.getClass().getName();
             String reason = e.getMessage();
             String stacktrace = ExceptionUtils.getStackTrace(e);
-
-            //Reporting any exception (crashes)
             monitor.reportCrash(errorName, reason, stacktrace);
+            
         } finally {
             monitor.leaveAllActions(childAction);
             logger.log("Dynatrace RootAction: Handler Request - FINISHED");
