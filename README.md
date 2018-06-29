@@ -26,6 +26,7 @@ Report events, errors and crashes
 Trace web requests to server-side PurePaths
 
 ## How to use:
+
 1-Add the dependency to maven pom.xml
 
 ```
@@ -41,9 +42,9 @@ Trace web requests to server-side PurePaths
 ```
 dynatrace.enable=true
 dynatrace.enable.verbose=true
-dynatrace.application.name=Dynatrace Lambda Monitor LIB
-dynatrace.application.id=82564fc9-1617-4257 ...
-dynatrace.endpoint.url=https://xzt878.dynatrace-managed.com:9999/mbeacon/75fcdbc5 ...
+dynatrace.application.name=<ApplicationName>
+dynatrace.application.id=<ApplicationID>
+dynatrace.endpoint.url=<ServerURL>
 dynatrace.device.id=42
 dynatrace.client.ip=8.8.8.8
 dynatrace.user=wagner.oliveira@provider-it.com.br
@@ -58,9 +59,9 @@ dynatrace.model.id=MyModelID
 ```
 DYNATRACE_ENABLE_MONITOR=true
 DYNATRACE_ENABLE_VERBOSE=true
-DYNATRACE_APPLICATION_NAME=Dynatrace Lambda Monitor LIB
-DYNATRACE_APPLICATION_ID=82564fc9-1617-4257 ...
-DYNATRACE_ENDPOINT_URL=https://xzt878.dynatrace-managed.com:9999/mbeacon/75fcdbc5 ...
+DYNATRACE_APPLICATION_NAME=<ApplicationName>
+DYNATRACE_APPLICATION_ID=<ApplicationID>
+DYNATRACE_ENDPOINT_URL=<ServerURL>
 DYNATRACE_DEVICE_ID=42
 DYNATRACE_CLIENT_IP=8.8.8.8
 DYNATRACE_USER=wagner.oliveira@provider-it.com.br
@@ -134,10 +135,8 @@ try {
 
 } catch (DynatraceMonitorException e) {
     DynatraceLogger.log(e);
-    String errorName = e.getClass().getName();
-    String reason = e.getMessage();
     String stacktrace = ExceptionUtils.getStackTrace(e);
-    monitor.reportCrash(errorName, reason, stacktrace);
+    monitor.reportCrash(e.getClass().getName(), e.getMessage(), stacktrace);
 }
 
 ```
@@ -164,10 +163,8 @@ public Integer handleRequest(DynamodbEvent dbEvent, Context context) {
             DynatraceLogger.log(e);
             
             //Reporting any exception (crashes)
-            String errorName = e.getClass().getName();
-            String reason = e.getMessage();
             String stacktrace = ExceptionUtils.getStackTrace(e);
-            monitor.reportCrash(errorName, reason, stacktrace);
+            monitor.reportCrash(e.getClass().getName(), e.getMessage(), stacktrace);
             
         } finally {
             monitor.leaveAllActions(childAction);
@@ -178,6 +175,37 @@ public Integer handleRequest(DynamodbEvent dbEvent, Context context) {
     }
 
 ```
+
+## How to Test this Library:
+
+1-Go to Dynatrace Console and create a new application configuration.
+
+2-Get The ApplicationName, ApplicationID and ServerURL and modify the file 'app.properties' at 'src/test/resources'.
+```
+dynatrace.application.name=<ApplicationName>
+dynatrace.application.id=<ApplicationID>
+dynatrace.endpoint.url=<ServerURL>
+```
+
+3-Go to pom.xml and modify maven-surefire plugin to skipTest=false
+```
+ <build>
+    <plugins>
+    
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.21.0</version>
+       	<configuration>
+          <skipTests>false</skipTests>
+        </configuration>
+      </plugin>
+
+      ....
+
+```
+
+4-Now you can run 'mvn clean package' in order get tests executed, and sending results to Dynatrace Server!
 
 ## I hope you enjoy it!  ;-) and feel free to make some improvements!!!
 

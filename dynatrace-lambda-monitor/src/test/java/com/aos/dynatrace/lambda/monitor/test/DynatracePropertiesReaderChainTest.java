@@ -36,10 +36,10 @@ public class DynatracePropertiesReaderChainTest {
 
         assertEquals(reader.isEnableMonitor(), true);
         assertEquals(reader.isEnableVerbose(), true);
-        assertEquals(reader.getApplicationName(), "Dynatrace Lambda Monitor LIB");
-        assertEquals(reader.getApplicationID(), "82564fc9-1617-4257-b26c-9a896056d42f");
+        assertEquals(reader.getApplicationName(), "<ApplicationName>");
+        assertEquals(reader.getApplicationID(), "<ApplicationID>");
         assertEquals(reader.getDeviceID(), new Long(42));
-        assertEquals(reader.getEndpointURL(), "https://xzt878.dynatrace-managed.com:9999/mbeacon/75fcdbc5-1040-45f0-a7c9-322ea8f88765");
+        assertEquals(reader.getEndpointURL(), "<ServerURL>");
         assertEquals(reader.getClientIP(), "8.8.8.8");
         assertEquals(reader.getUser(), "wagner.oliveira@provider-it.com.br");
         assertEquals(reader.getApplicationVersion(), "1.0.0.0");
@@ -54,17 +54,17 @@ public class DynatracePropertiesReaderChainTest {
 
         environmentVariables.set("DYNATRACE_ENABLE_MONITOR", "true");
         environmentVariables.set("DYNATRACE_ENABLE_VERBOSE", "true");
-        environmentVariables.set("DYNATRACE_APPLICATION_NAME", "Dynatrace Lambda Monitor LIB");
-        environmentVariables.set("DYNATRACE_APPLICATION_ID", "82564fc9-1617-4257-b26c-9a896056d42f");
+        environmentVariables.set("DYNATRACE_APPLICATION_NAME", "<ApplicationName>");
+        environmentVariables.set("DYNATRACE_APPLICATION_ID", "<ApplicationID>");
 
         readPropertiesFromFileAndEnvironmentVariables();
 
         assertEquals(reader.isEnableMonitor(), true);
         assertEquals(reader.isEnableVerbose(), true);
-        assertEquals(reader.getApplicationName(), "Dynatrace Lambda Monitor LIB");
-        assertEquals(reader.getApplicationID(), "82564fc9-1617-4257-b26c-9a896056d42f");
+        assertEquals(reader.getApplicationName(), "<ApplicationName>");
+        assertEquals(reader.getApplicationID(), "<ApplicationID>");
         assertEquals(reader.getDeviceID(), new Long(42));
-        assertEquals(reader.getEndpointURL(), "https://xzt878.dynatrace-managed.com:9999/mbeacon/75fcdbc5-1040-45f0-a7c9-322ea8f88765");
+        assertEquals(reader.getEndpointURL(), "<ServerURL>");
         assertEquals(reader.getClientIP(), "8.8.8.8");
         assertEquals(reader.getUser(), "wagner.oliveira@provider-it.com.br");
         assertEquals(reader.getApplicationVersion(), "1.0.0.0");
