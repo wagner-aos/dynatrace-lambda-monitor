@@ -161,7 +161,7 @@ public Integer handleRequest(DynamodbEvent dbEvent, Context context) {
             this.logger = Optional.ofNullable(context).map(Context::getLogger).orElse(System.err::println);
             dbEvent.getRecords().forEach(this::processar);
 
-        } catch (DynatraceMonitorException e) {
+        } catch (Exception e) {
             DynatraceLogger.log(e);
             
             //Reporting any exception (crashes)
